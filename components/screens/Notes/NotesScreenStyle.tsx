@@ -3,13 +3,15 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   textInput: {
     backgroundColor: "#252525",
-    fontFamily: "Quicksand-Light",
-    padding: 10,
+    // color: "#929292",
+    color: "white",
+    fontFamily: "DaiBannaSIL-Regular",
+    padding: 35,
     width: "100%",
     height: "100%",
-    fontSize: 20,
+    letterSpacing: 1.8,
+    fontSize: 24,
     textAlignVertical: "top",
-    color: "white",
   },
   container: {
     backgroundColor: "#252525",
@@ -32,7 +34,7 @@ export const styles = StyleSheet.create({
   },
   text: {
     // position: "relative",
-    fontFamily: "Quicksand-Light",
+    fontFamily: "DaiBannaSIL-Regular",
     fontSize: 20,
     // letterSpacing: 0.25,
     color: "white",
