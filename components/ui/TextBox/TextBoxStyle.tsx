@@ -7,7 +7,7 @@ export const styles = StyleSheet.create({
     // fontWeight: "bold",
     // letterSpacing: 0.25,
     color: "black",
-    fontFamily: "Quicksand-Light",
+    fontFamily: "DaiBannaSIL-Regular",
   },
   view: {
     backgroundColor: "#FFAB91",
