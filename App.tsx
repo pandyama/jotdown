@@ -21,6 +21,7 @@ export default function App() {
     "Quicksand-Regular": require("./assets/fonts/Quicksand/Quicksand-Regular.ttf"),
     "Quicksand-Light": require("./assets/fonts/Quicksand/Quicksand-Light.ttf"),
     "RadioCanada-Regular": require("./assets/fonts/RadioCanada/RadioCanada-Regular.ttf"),
+    "DaiBannaSIL-Regular": require("./assets/fonts/DaiBannaSIL/DaiBannaSIL-Regular.ttf"),
   });
 
   if (!fontsLoaded) {
@@ -42,7 +43,7 @@ export default function App() {
               options={{
                 title: "Jot Down",
                 headerTitleStyle: {
-                  fontFamily: "Quicksand-Light",
+                  fontFamily: "DaiBannaSIL-Regular",
                   fontSize: 30,
                 },
               }}
@@ -53,8 +54,8 @@ export default function App() {
               options={{
                 title: "Write Note",
                 headerTitleStyle: {
-                  fontFamily: "Quicksand-Light",
-                  fontSize: 20,
+                  fontFamily: "DaiBannaSIL-Regular",
+                  fontSize: 30,
                 },
               }}
             />
