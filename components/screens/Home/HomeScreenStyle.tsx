@@ -57,6 +57,8 @@ export const styles = StyleSheet.create({
     maxHeight: 300,
     flex: 1,
     padding: 10,
+    display: "flex",
+    justifyContent: "space-between",
     // alignSelf: "center",
     // justifyContent: "center",
     // alignItems: "center",

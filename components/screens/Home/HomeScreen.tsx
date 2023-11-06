@@ -14,16 +14,25 @@ import TextBox from "../../ui/TextBox/TextBox";
 import Button from "../../ui/Button/Button";
 import { Pressable } from "react-native";
 
-const Card = ({ id, name, color }: any) => {
+const Card = ({ id, name, color, savedOn }: any) => {
   return (
     <View style={{ ...styles.card, backgroundColor: color }}>
       <Text
         style={{
           fontFamily: "DaiBannaSIL-Regular",
-          fontSize: 27,
+          fontSize: 20,
         }}
       >
         {name}
+      </Text>
+
+      <Text
+        style={{
+          fontFamily: "DaiBannaSIL-Regular",
+          fontSize: 14,
+        }}
+      >
+        {savedOn}
       </Text>
     </View>
   );
@@ -108,7 +117,11 @@ export default function HomeScreen({ navigation }: any) {
                 flexDirection: "row",
               }}
             >
-              <Card name={item.noteContent} color={item.noteColor} />
+              <Card
+                name={item.noteContent}
+                color={item.noteColor}
+                savedOn={item.savedOn}
+              />
             </View>
           );
         })}
