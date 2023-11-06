@@ -3,7 +3,6 @@ import { StyleSheet } from "react-native";
 export const styles = StyleSheet.create({
   textInput: {
     backgroundColor: "#252525",
-    // color: "#929292",
     color: "white",
     fontFamily: "DaiBannaSIL-Regular",
     padding: 35,
@@ -26,17 +25,14 @@ export const styles = StyleSheet.create({
     padding: 10,
     borderRadius: 10,
     width: "20%",
-    // height: "8%",
     backgroundColor: "#3b3b3b",
     // keep FAB in top right using the below properties
     right: 20,
     bottom: 20,
   },
   text: {
-    // position: "relative",
     fontFamily: "DaiBannaSIL-Regular",
     fontSize: 20,
-    // letterSpacing: 0.25,
     color: "white",
   },
 });

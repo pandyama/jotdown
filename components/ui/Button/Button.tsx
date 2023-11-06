@@ -1,4 +1,3 @@
-import { StatusBar } from "expo-status-bar";
 import { Pressable, Text } from "react-native";
 import { styles } from "./ButtonStyle";
 

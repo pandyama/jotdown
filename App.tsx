@@ -2,15 +2,9 @@ import React, { useCallback, useEffect, useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-import * as SplashScreen from "expo-splash-screen";
-
 import { useFonts } from "expo-font";
-import { StatusBar } from "expo-status-bar";
 import { StyleSheet, Text, View } from "react-native";
 
-import Button from "./components/ui/Button/Button";
-import Heading from "./components/ui/Heading/Heading";
-import TextBox from "./components/ui/TextBox/TextBox";
 import HomeScreen from "./components/screens/Home/HomeScreen";
 import NotesScreen from "./components/screens/Notes/NotesScreen";
 
@@ -70,8 +64,6 @@ const styles = StyleSheet.create({
   container: {
     flex: 1,
     backgroundColor: "#FFFFFF",
-    // alignItems: "center",
-    // justifyContent: "center",
     borderStyle: "solid",
     borderWidth: 2,
     margin: 5,

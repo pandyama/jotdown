@@ -2,7 +2,6 @@ import { StyleSheet } from "react-native";
 
 export const styles = StyleSheet.create({
   button: {
-    // display: "flex",
     position: "absolute",
     alignItems: "center",
     justifyContent: "center",
@@ -18,8 +17,6 @@ export const styles = StyleSheet.create({
   text: {
     position: "relative",
     fontSize: 30,
-    // fontWeight: "bold",
-    // letterSpacing: 0.25,
     color: "white",
   },
 });

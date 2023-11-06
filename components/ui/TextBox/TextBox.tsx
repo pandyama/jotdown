@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import { View, Pressable, Text } from "react-native";
+import { View, Text } from "react-native";
 import { styles } from "./TextBoxStyle";
 
 interface Time {
