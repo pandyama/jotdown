@@ -34,17 +34,18 @@ export const styles = StyleSheet.create({
   },
   text: {
     position: "relative",
-    fontSize: 30,
+    fontSize: 24,
     color: "white",
   },
   card: {
     height: 200,
     maxHeight: 300,
-    flex: 1,
+    backgroundColor: "white",
+    // flex: 1,
     padding: 10,
     display: "flex",
     justifyContent: "space-between",
     margin: 10,
-    borderRadius: 5,
+    borderRadius: 10,
   },
 });
