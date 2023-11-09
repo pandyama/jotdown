@@ -13,7 +13,7 @@ const Card = ({ id, name, color, savedOn }: any) => {
     <View style={{ ...styles.card, backgroundColor: color }}>
       <Text
         style={{
-          fontFamily: "DaiBannaSIL-Regular",
+          fontFamily: "DMSans-Regular",
           fontSize: 20,
         }}
       >
@@ -22,7 +22,7 @@ const Card = ({ id, name, color, savedOn }: any) => {
 
       <Text
         style={{
-          fontFamily: "DaiBannaSIL-Regular",
+          fontFamily: "DMSans-Regular",
           fontSize: 14,
         }}
       >
@@ -46,7 +46,9 @@ export default function HomeScreen({ navigation }: any) {
     try {
       const keys = await AsyncStorage.getAllKeys();
       const notes = await AsyncStorage.multiGet(keys);
-      let parsedNotes = notes.map((note) => JSON.parse(note[1] || ""));
+      let parsedNotes = notes
+        .map((note) => JSON.parse(note[1] || ""))
+        .reverse();
 
       console.log("returning getNotes", parsedNotes);
 
@@ -68,23 +70,34 @@ export default function HomeScreen({ navigation }: any) {
           backgroundColor: "#252525",
         }}
       >
-        {notes.map((item, idx) => {
-          return (
-            <View
-              key={idx}
-              style={{
-                width: "50%",
-                flexDirection: "row",
-              }}
-            >
-              <Card
-                name={item.noteContent}
-                color={item.noteColor}
-                savedOn={item.savedOn}
-              />
-            </View>
-          );
-        })}
+        {notes
+          .filter((note) => note.noteContent && note.noteColor && note.savedOn)
+          .map((item, idx) => {
+            return (
+              <View
+                key={idx}
+                style={{
+                  width: "50%",
+                  // flexDirection: "row",
+                }}
+              >
+                <Pressable
+                  onPress={() =>
+                    navigation.navigate("Notes", {
+                      noteId: item.noteId.toString(),
+                      noteContent: item.noteContent.toString(),
+                    })
+                  }
+                >
+                  <Card
+                    name={item.noteContent}
+                    color={item.noteColor}
+                    savedOn={item.savedOn}
+                  />
+                </Pressable>
+              </View>
+            );
+          })}
       </ScrollView>
       <Pressable
         style={styles.button}
