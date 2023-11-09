@@ -4,7 +4,7 @@ export const styles = StyleSheet.create({
   text: {
     fontSize: 24,
     color: "black",
-    fontFamily: "DaiBannaSIL-Regular",
+    fontFamily: "DMSans-Regular",
   },
   view: {
     backgroundColor: "#FFAB91",
