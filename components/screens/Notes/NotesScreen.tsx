@@ -20,12 +20,18 @@ export default function NotesScreen({ route, navigation }: any) {
   const [note, setNote] = useState("");
 
   const editNote = async (text: string) => {
-    const existingObject = await AsyncStorage.getItem(noteId);
-    const newObject = {
-      ...JSON.parse(existingObject || "{}"),
-      noteContent: text,
-    };
-    await AsyncStorage.mergeItem(noteId, JSON.stringify(newObject));
+    if (text !== "") {
+      const existingObject = await AsyncStorage.getItem(noteId);
+
+      if (existingObject) {
+        const newObject = {
+          ...JSON.parse(existingObject),
+          noteContent: text,
+        };
+        await AsyncStorage.mergeItem(noteId, JSON.stringify(newObject));
+        navigation.navigate("Home");
+      }
+    }
     navigation.navigate("Home");
   };
 
