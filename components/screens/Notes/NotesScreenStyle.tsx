@@ -22,8 +22,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    padding: 15,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 4,
     width: "20%",
     backgroundColor: "#3b3b3b",
     // keep FAB in top right using the below properties
@@ -35,8 +35,8 @@ export const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     textAlign: "center",
-    padding: 14,
-    borderRadius: 6,
+    padding: 10,
+    borderRadius: 4,
     width: "20%",
     backgroundColor: "#9c0000",
     // keep FAB in top right using the below properties
