@@ -37,9 +37,13 @@ export default function App() {
               component={HomeScreen}
               options={{
                 title: "Jot Down",
+                headerStyle: {
+                  backgroundColor: "#F2F3F4",
+                },
                 headerTitleStyle: {
                   fontFamily: "DMSans-Regular",
                   fontSize: 30,
+                  color: "#252525",
                 },
               }}
             />
@@ -48,6 +52,9 @@ export default function App() {
               component={NotesScreen}
               options={{
                 title: "Write Note",
+                headerStyle: {
+                  backgroundColor: "#F2F3F4",
+                },
                 headerTitleStyle: {
                   fontFamily: "DMSans-Regular",
                   fontSize: 30,
