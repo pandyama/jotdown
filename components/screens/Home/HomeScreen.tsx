@@ -14,19 +14,19 @@ const Card = ({ id, name, color, savedOn }: any) => {
       <Text
         style={{
           fontFamily: "DMSans-Regular",
-          fontSize: 20,
-        }}
-      >
-        {name}
-      </Text>
-
-      <Text
-        style={{
-          fontFamily: "DMSans-Regular",
-          fontSize: 14,
+          fontSize: 11,
         }}
       >
         {savedOn}
+        {"\n"}
+      </Text>
+      <Text
+        style={{
+          fontFamily: "DMSans-Regular",
+          fontSize: 17,
+        }}
+      >
+        {name}
       </Text>
     </View>
   );
@@ -50,14 +50,11 @@ export default function HomeScreen({ navigation }: any) {
         .map((note) => JSON.parse(note[1] || ""))
         .reverse();
 
-      console.log("returning getNotes", parsedNotes);
-
       setNotes(parsedNotes);
 
       return parsedNotes;
     } catch (e) {
       console.log("error retrieving  all notes", e);
-      // setIsLoading(false);
     }
   };
 
