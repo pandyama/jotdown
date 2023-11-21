@@ -2,7 +2,15 @@ import React, { useCallback, useEffect, useState } from "react";
 import moment from "moment";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Alert, Text, View, TextInput, Pressable } from "react-native";
+import {
+  Alert,
+  KeyboardAvoidingView,
+  Platform,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+} from "react-native";
 
 import { styles } from "./NotesScreenStyle";
 
@@ -99,44 +107,57 @@ export default function NotesScreen({ route, navigation }: any) {
   };
 
   return (
-    <View style={styles.container}>
-      {noteId !== "-1" ? (
-        <>
-          <TextInput
-            keyboardType="default"
-            placeholderTextColor="#939393"
-            placeholder={editNoteContent}
-            multiline={true}
-            style={styles.textInput}
-            defaultValue={editNoteContent}
-            onChangeText={(text) => setNote(text)}
-          />
-          <Pressable style={styles.saveButton} onPress={() => editNote(note)}>
-            <Text style={styles.text}>Save</Text>
-          </Pressable>
-          <Pressable
-            style={styles.deleteButton}
-            onPress={() => deleteNote(noteId)}
-          >
-            <Text style={styles.text}>Delete</Text>
-          </Pressable>
-        </>
-      ) : (
-        <>
-          <TextInput
-            keyboardType="default"
-            placeholderTextColor="#939393"
-            placeholder={"Write something..."}
-            multiline={true}
-            style={styles.textInput}
-            value={note}
-            onChangeText={(text) => setNote(text)}
-          />
-          <Pressable style={styles.saveButton} onPress={() => saveNote(note)}>
-            <Text style={styles.text}>Save</Text>
-          </Pressable>
-        </>
-      )}
-    </View>
+    <KeyboardAvoidingView
+      style={{
+        flexGrow: 1,
+        height: "100%",
+      }}
+      enabled
+      behavior={Platform.OS === "ios" ? "padding" : "height"}
+      keyboardVerticalOffset={Platform.select({
+        ios: 80,
+        android: 200,
+      })}
+    >
+      <View style={styles.container}>
+        {noteId !== "-1" ? (
+          <>
+            <TextInput
+              keyboardType="default"
+              placeholderTextColor="#939393"
+              placeholder={editNoteContent}
+              multiline={true}
+              style={styles.textInput}
+              defaultValue={editNoteContent}
+              onChangeText={(text) => setNote(text)}
+            />
+            <Pressable style={styles.saveButton} onPress={() => editNote(note)}>
+              <Text style={styles.text}>Save</Text>
+            </Pressable>
+            <Pressable
+              style={styles.deleteButton}
+              onPress={() => deleteNote(noteId)}
+            >
+              <Text style={styles.text}>Delete</Text>
+            </Pressable>
+          </>
+        ) : (
+          <>
+            <TextInput
+              keyboardType="default"
+              placeholderTextColor="#939393"
+              placeholder={"Write something..."}
+              multiline={true}
+              style={styles.textInput}
+              value={note}
+              onChangeText={(text) => setNote(text)}
+            />
+            <Pressable style={styles.saveButton} onPress={() => saveNote(note)}>
+              <Text style={styles.text}>Save</Text>
+            </Pressable>
+          </>
+        )}
+      </View>
+    </KeyboardAvoidingView>
   );
 }
