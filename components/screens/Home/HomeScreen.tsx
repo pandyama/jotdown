@@ -4,7 +4,7 @@ import { useIsFocused } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Pressable, ScrollView, Text, View } from "react-native";
+import { Pressable, ScrollView, Text, View, Platform } from "react-native";
 
 import { styles } from "./HomeScreenStyle";
 
@@ -46,9 +46,11 @@ export default function HomeScreen({ navigation }: any) {
     try {
       const keys = await AsyncStorage.getAllKeys();
       const notes = await AsyncStorage.multiGet(keys);
-      let parsedNotes = notes
-        .map((note) => JSON.parse(note[1] || ""))
-        .reverse();
+
+      let parsedNotes =
+        Platform.OS === "ios"
+          ? notes.map((note) => JSON.parse(note[1] || ""))
+          : notes.map((note) => JSON.parse(note[1] || "")).reverse();
 
       setNotes(parsedNotes);
 
