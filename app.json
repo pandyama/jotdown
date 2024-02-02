@@ -17,11 +17,12 @@
     },
     "android": {
       "package": "com.mp.jotdown",
-      "versionCode": 4,
-      "version": "1.0.3",
+      "versionCode": 5,
+      "version": "1.0.4",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/appIcon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/appIcon_foreground.png",
+        "backgroundImage": "./assets/appIcon_background.png",
+        "monochromeImage": "./assets/appIcon_monochrome.png"
       },
       "softwareKeyboardLayoutMode": "pan"
     },
