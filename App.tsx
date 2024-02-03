@@ -1,9 +1,15 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React, { useState } from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 import HomeScreen from "./components/screens/Home/HomeScreen";
 import NotesScreen from "./components/screens/Notes/NotesScreen";
@@ -30,39 +36,47 @@ export default function App() {
   return (
     <>
       {fontsLoaded && (
-        <NavigationContainer>
-          <stack.Navigator initialRouteName="Home">
-            <stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                title: "Jot Down",
-                headerStyle: {
-                  backgroundColor: "#F2F3F4",
-                },
-                headerTitleStyle: {
-                  fontFamily: "DMSans-Regular",
-                  fontSize: 30,
-                  color: "#252525",
-                },
-              }}
-            />
-            <stack.Screen
-              name="Notes"
-              component={NotesScreen}
-              options={{
-                title: "Write Note",
-                headerStyle: {
-                  backgroundColor: "#F2F3F4",
-                },
-                headerTitleStyle: {
-                  fontFamily: "DMSans-Regular",
-                  fontSize: 30,
-                },
-              }}
-            />
-          </stack.Navigator>
-        </NavigationContainer>
+        <KeyboardAvoidingView
+          style={{
+            flex: 1,
+          }}
+          enabled
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+        >
+          <NavigationContainer>
+            <stack.Navigator initialRouteName="Home">
+              <stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                  title: "Jot Down",
+                  headerStyle: {
+                    backgroundColor: "#F2F3F4",
+                  },
+                  headerTitleStyle: {
+                    fontFamily: "DMSans-Regular",
+                    fontSize: 30,
+                    color: "#252525",
+                  },
+                }}
+              />
+              <stack.Screen
+                name="Notes"
+                component={NotesScreen}
+                options={{
+                  title: "Write Note",
+                  headerStyle: {
+                    backgroundColor: "#F2F3F4",
+                  },
+                  headerTitleStyle: {
+                    fontFamily: "DMSans-Regular",
+                    fontSize: 30,
+                  },
+                }}
+              />
+            </stack.Navigator>
+          </NavigationContainer>
+        </KeyboardAvoidingView>
       )}
     </>
   );
