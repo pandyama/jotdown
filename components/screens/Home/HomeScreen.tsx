@@ -77,7 +77,6 @@ export default function HomeScreen({ navigation }: any) {
                 key={idx}
                 style={{
                   width: "50%",
-                  // flexDirection: "row",
                 }}
               >
                 <Pressable

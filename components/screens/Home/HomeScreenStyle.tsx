@@ -4,6 +4,7 @@ export const styles = StyleSheet.create({
   container: {
     flexGrow: 1,
     backgroundColor: "#252525",
+    padding: 5,
   },
   twoColumns: {
     flex: 1,
@@ -43,14 +44,9 @@ export const styles = StyleSheet.create({
     flexBasis: "auto",
     overflow: "scroll",
     backgroundColor: "white",
-    // flex: 1,
-    // padding: 8,
-    paddingLeft: 5,
-    paddingTop: 8,
-    paddingBottom: 8,
+    padding: 12,
     display: "flex",
-    // justifyContent: "space-between",
     margin: 8,
-    borderRadius: 5,
+    borderRadius: 12,
   },
 });
