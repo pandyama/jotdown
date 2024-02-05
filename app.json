@@ -15,10 +15,14 @@
     "ios": {
       "supportsTablet": true
     },
+    "androidStatusBar": {
+      "backgroundColor": "#F2F3F4",
+      "translucent": false
+    },
     "android": {
       "package": "com.mp.jotdown",
-      "versionCode": 6,
-      "version": "1.1.0",
+      "versionCode": 7,
+      "version": "1.2.0",
       "adaptiveIcon": {
         "foregroundImage": "./assets/appIcon_foreground.png",
         "backgroundImage": "./assets/appIcon_background.png",

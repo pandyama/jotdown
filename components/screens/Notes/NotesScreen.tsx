@@ -1,8 +1,17 @@
 import React, { useState } from "react";
 import moment from "moment";
 import AsyncStorage from "@react-native-async-storage/async-storage";
+import { SafeAreaView } from "react-native-safe-area-context";
 
-import { Alert, Text, View, TextInput, Pressable } from "react-native";
+import {
+  Alert,
+  Text,
+  View,
+  TextInput,
+  Pressable,
+  StatusBar,
+  Platform,
+} from "react-native";
 
 import { styles } from "./NotesScreenStyle";
 
@@ -98,6 +107,13 @@ export default function NotesScreen({ route, navigation }: any) {
   };
 
   return (
+    // <SafeAreaView
+    //   style={{
+    //     flex: 1,
+    //     backgroundColor: "white",
+    //     paddingTop: Platform.OS === "android" ? StatusBar.currentHeight : 0,
+    //   }}
+    // >
     <View style={styles.container}>
       {noteId !== "-1" ? (
         <>
@@ -137,5 +153,6 @@ export default function NotesScreen({ route, navigation }: any) {
         </>
       )}
     </View>
+    // </SafeAreaView>
   );
 }

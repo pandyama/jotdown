@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -42,6 +42,10 @@ export default function App() {
           }}
           enabled
           behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.select({
+            ios: 0,
+            android: 50,
+          })}
         >
           <NavigationContainer>
             <stack.Navigator initialRouteName="Home">
