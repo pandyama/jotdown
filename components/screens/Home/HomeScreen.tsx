@@ -4,9 +4,17 @@ import { useIsFocused } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Pressable, ScrollView, Text, View, Platform } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  Platform,
+  StatusBar,
+} from "react-native";
 
 import { styles } from "./HomeScreenStyle";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 const Card = ({ id, name, color, savedOn }: any) => {
   return (
@@ -61,6 +69,13 @@ export default function HomeScreen({ navigation }: any) {
   };
 
   return (
+    // <SafeAreaView
+    //   style={{
+    //     flex: 1,
+    //     backgroundColor: "#252525",
+    //     paddingTop: Platform.OS === "android" ? 0 : 0,
+    //   }}
+    // >
     <View style={styles.container}>
       <ScrollView
         contentContainerStyle={{
@@ -104,5 +119,6 @@ export default function HomeScreen({ navigation }: any) {
         <Text style={styles.text}>+</Text>
       </Pressable>
     </View>
+    // </SafeAreaView>
   );
 }
