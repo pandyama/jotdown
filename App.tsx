@@ -44,7 +44,7 @@ export default function App() {
           behavior={Platform.OS === "ios" ? "padding" : "height"}
           keyboardVerticalOffset={Platform.select({
             ios: 0,
-            android: 50,
+            android: 0,
           })}
         >
           <NavigationContainer>
