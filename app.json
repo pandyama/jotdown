@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "jotdown",
+    "name": "loggedit",
     "slug": "jotdown",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -13,7 +13,9 @@
     },
     "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mp.jotdown",
+      "buildNumber": "1.0.2"
     },
     "androidStatusBar": {
       "backgroundColor": "#F2F3F4",
