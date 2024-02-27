@@ -14,6 +14,12 @@ import {
 import HomeScreen from "./components/screens/Home/HomeScreen";
 import NotesScreen from "./components/screens/Notes/NotesScreen";
 
+/**
+ * Useful expo commands
+ * - `eas build --platform ios`
+ * - `eas submit -p ios --latest`
+ */
+
 const stack = createNativeStackNavigator();
 
 export default function App() {
@@ -53,7 +59,7 @@ export default function App() {
                 name="Home"
                 component={HomeScreen}
                 options={{
-                  title: "Jot Down",
+                  title: "Logged It",
                   headerStyle: {
                     backgroundColor: "#F2F3F4",
                   },
