@@ -4,17 +4,9 @@ import { useIsFocused } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import {
-  Pressable,
-  ScrollView,
-  Text,
-  View,
-  Platform,
-  StatusBar,
-} from "react-native";
+import { Pressable, ScrollView, Text, View, Platform } from "react-native";
 
 import { styles } from "./HomeScreenStyle";
-import { SafeAreaView } from "react-native-safe-area-context";
 
 const Card = ({ id, name, color, savedOn }: any) => {
   return (

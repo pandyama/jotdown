@@ -1,17 +1,8 @@
 import React, { useState } from "react";
 import moment from "moment";
 import AsyncStorage from "@react-native-async-storage/async-storage";
-import { SafeAreaView } from "react-native-safe-area-context";
 
-import {
-  Alert,
-  Text,
-  View,
-  TextInput,
-  Pressable,
-  StatusBar,
-  Platform,
-} from "react-native";
+import { Alert, Text, View, TextInput, Pressable } from "react-native";
 
 import { styles } from "./NotesScreenStyle";
 
@@ -27,22 +18,6 @@ export default function NotesScreen({ route, navigation }: any) {
   }
 
   const [note, setNote] = useState("");
-
-  const editNote = async (text: string) => {
-    if (text !== "") {
-      const existingObject = await AsyncStorage.getItem(noteId);
-
-      if (existingObject) {
-        const newObject = {
-          ...JSON.parse(existingObject),
-          noteContent: text,
-        };
-        await AsyncStorage.mergeItem(noteId, JSON.stringify(newObject));
-        navigation.navigate("Home");
-      }
-    }
-    navigation.navigate("Home");
-  };
 
   const saveNote = async (text: string) => {
     const colorIndex = await AsyncStorage.getItem("colorIndex");
@@ -87,6 +62,22 @@ export default function NotesScreen({ route, navigation }: any) {
     } catch (e) {
       console.log("Error saving note", e);
     }
+  };
+
+  const editNote = async (text: string) => {
+    if (text !== "") {
+      const existingObject = await AsyncStorage.getItem(noteId);
+
+      if (existingObject) {
+        const newObject = {
+          ...JSON.parse(existingObject),
+          noteContent: text,
+        };
+        await AsyncStorage.mergeItem(noteId, JSON.stringify(newObject));
+        navigation.navigate("Home");
+      }
+    }
+    navigation.navigate("Home");
   };
 
   const deleteNote = async (id: string) => {

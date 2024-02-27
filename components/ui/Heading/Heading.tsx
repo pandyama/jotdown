@@ -8,5 +8,5 @@ interface Time {
 }
 
 export default function Heading() {
-  return <Text style={styles.text}>Jot Down</Text>;
+  return <Text style={styles.text}>Logged It</Text>;
 }
