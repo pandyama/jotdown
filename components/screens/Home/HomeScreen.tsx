@@ -4,7 +4,15 @@ import { useIsFocused } from "@react-navigation/native";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
-import { Pressable, ScrollView, Text, View, Platform } from "react-native";
+import {
+  Pressable,
+  ScrollView,
+  Text,
+  View,
+  Platform,
+  DimensionValue,
+  FlexStyle,
+} from "react-native";
 
 import { styles } from "./HomeScreenStyle";
 
@@ -33,6 +41,9 @@ const Card = ({ id, name, color, savedOn }: any) => {
 };
 
 export default function HomeScreen({ navigation }: any) {
+  const [flexDirection, setFlexDirection] = useState<any>("row");
+  const [width, setWidth] = useState<DimensionValue>("50%");
+
   const isFocused = useIsFocused();
   const [notes, setNotes] = useState<any[]>([]);
 
@@ -40,7 +51,7 @@ export default function HomeScreen({ navigation }: any) {
     if (isFocused) {
       getNotes();
     }
-  }, [isFocused]);
+  }, [isFocused, flexDirection, width]);
 
   const getNotes = async () => {
     try {
@@ -71,7 +82,7 @@ export default function HomeScreen({ navigation }: any) {
     <View style={styles.container}>
       <ScrollView
         contentContainerStyle={{
-          flexDirection: "row",
+          flexDirection: flexDirection,
           flexWrap: "wrap",
           backgroundColor: "#252525",
         }}
@@ -83,7 +94,7 @@ export default function HomeScreen({ navigation }: any) {
               <View
                 key={idx}
                 style={{
-                  width: "50%",
+                  width: width, // TODO: 100%
                 }}
               >
                 <Pressable
@@ -109,6 +120,20 @@ export default function HomeScreen({ navigation }: any) {
         onPress={() => navigation.navigate("Notes")}
       >
         <Text style={styles.text}>+</Text>
+      </Pressable>
+      <Pressable
+        style={styles.buttonTwo}
+        onPress={() => {
+          if (flexDirection === "column") {
+            setFlexDirection("row");
+            setWidth("50%" as DimensionValue);
+          } else if (flexDirection === "row") {
+            setFlexDirection("column");
+            setWidth("100%" as DimensionValue);
+          }
+        }}
+      >
+        <Text style={styles.text}>↻</Text>
       </Pressable>
     </View>
     // </SafeAreaView>

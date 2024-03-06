@@ -100,17 +100,5 @@ const styles = StyleSheet.create({
     borderWidth: 2,
     margin: 5,
   },
-  twoColumns: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-  },
-  leftColumn: {
-    flex: 1,
-  },
-  rightColumn: {
-    flex: 1,
-  },
   textStyle: { fontFamily: "Quicksand-Light" },
 });
