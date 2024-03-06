@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
 
 import { useIsFocused } from "@react-navigation/native";
+import { Entypo } from "@expo/vector-icons";
 
 import AsyncStorage from "@react-native-async-storage/async-storage";
 
 import {
+  Alert,
   Pressable,
   ScrollView,
   Text,
@@ -16,7 +18,23 @@ import {
 
 import { styles } from "./HomeScreenStyle";
 
-const Card = ({ id, name, color, savedOn }: any) => {
+const Card = ({ id, noteId, name, color, savedOn }: any) => {
+  const deleteNote = async (id: string) => {
+    Alert.alert("Delete Note", "", [
+      {
+        text: "Cancel",
+        onPress: () => console.log("Cancel Pressed"),
+        style: "cancel",
+      },
+      {
+        text: "OK",
+        onPress: async () => {
+          await AsyncStorage.removeItem(noteId);
+        },
+      },
+    ]);
+  };
+
   return (
     <View style={{ ...styles.card, backgroundColor: color }}>
       <Text
@@ -28,6 +46,7 @@ const Card = ({ id, name, color, savedOn }: any) => {
         {savedOn}
         {"\n"}
       </Text>
+
       <Text
         style={{
           fontFamily: "DMSans-Regular",
@@ -36,6 +55,18 @@ const Card = ({ id, name, color, savedOn }: any) => {
       >
         {name}
       </Text>
+      <View
+        style={{
+          position: "absolute",
+          right: 10,
+          bottom: 0,
+          margin: 5,
+        }}
+      >
+        <Pressable onPress={() => deleteNote(noteId)}>
+          <Entypo name="trash" size={24} color="black" />
+        </Pressable>
+      </View>
     </View>
   );
 };
@@ -51,7 +82,7 @@ export default function HomeScreen({ navigation }: any) {
     if (isFocused) {
       getNotes();
     }
-  }, [isFocused, flexDirection, width]);
+  }, [isFocused, flexDirection, width, notes.length]);
 
   const getNotes = async () => {
     try {
@@ -109,6 +140,7 @@ export default function HomeScreen({ navigation }: any) {
                     name={item.noteContent}
                     color={item.noteColor}
                     savedOn={item.savedOn}
+                    noteId={item.noteId.toString()}
                   />
                 </Pressable>
               </View>
