@@ -15,7 +15,7 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mp.jotdown",
-      "buildNumber": "1.0.3"
+      "buildNumber": "1.0.4"
     },
     "androidStatusBar": {
       "backgroundColor": "#F2F3F4",
