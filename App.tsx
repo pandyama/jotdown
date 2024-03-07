@@ -18,6 +18,9 @@ import NotesScreen from "./components/screens/Notes/NotesScreen";
  * Useful expo commands
  * - `eas build --platform ios`
  * - `eas submit -p ios --latest`
+ *
+ * Useful links
+ * - https://icons.expo.fyi/Index/Entypo/trash
  */
 
 const stack = createNativeStackNavigator();
