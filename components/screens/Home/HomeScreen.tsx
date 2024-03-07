@@ -18,7 +18,7 @@ import {
 
 import { styles } from "./HomeScreenStyle";
 
-const Card = ({ id, noteId, name, color, savedOn }: any) => {
+const Card = ({ noteId, name, color, savedOn, navigation }: any) => {
   const deleteNote = async (id: string) => {
     Alert.alert("Delete Note", "", [
       {
@@ -29,7 +29,8 @@ const Card = ({ id, noteId, name, color, savedOn }: any) => {
       {
         text: "OK",
         onPress: async () => {
-          await AsyncStorage.removeItem(noteId);
+          await AsyncStorage.removeItem(id);
+          await navigation.navigate("Home");
         },
       },
     ]);
@@ -82,7 +83,11 @@ export default function HomeScreen({ navigation }: any) {
     if (isFocused) {
       getNotes();
     }
-  }, [isFocused, flexDirection, width, notes.length]);
+  }, [isFocused, flexDirection, width]);
+
+  useEffect(() => {
+    getNotes();
+  }, [notes]);
 
   const getNotes = async () => {
     try {
@@ -141,6 +146,7 @@ export default function HomeScreen({ navigation }: any) {
                     color={item.noteColor}
                     savedOn={item.savedOn}
                     noteId={item.noteId.toString()}
+                    navigation={navigation}
                   />
                 </Pressable>
               </View>

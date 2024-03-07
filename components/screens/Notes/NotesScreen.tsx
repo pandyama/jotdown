@@ -9,7 +9,7 @@ import { styles } from "./NotesScreenStyle";
 const colors = ["#ffcc80", "#E6EE9B", "#CF93D9", "#80DEEA", "#FFAB91"];
 
 export default function NotesScreen({ route, navigation }: any) {
-  let noteId: string = "-1";
+  let noteId: string = "";
   let editNoteContent;
 
   if (route && route.params) {
@@ -20,24 +20,8 @@ export default function NotesScreen({ route, navigation }: any) {
   const [note, setNote] = useState("");
 
   const saveNote = async (text: string) => {
-    const colorIndex = await AsyncStorage.getItem("colorIndex");
-    const noteId = await AsyncStorage.getItem("noteId");
-    let newNoteId;
-
-    if (!colorIndex || colorIndex === "4") {
-      await AsyncStorage.setItem("colorIndex", "0");
-    } else {
-      const numColorIndex = Number(colorIndex) + 1;
-      await AsyncStorage.setItem("colorIndex", numColorIndex.toString());
-    }
-
-    if (!noteId) {
-      await AsyncStorage.setItem("noteId", "0");
-      newNoteId = "0";
-    } else {
-      newNoteId = Number(noteId) + 1;
-      await AsyncStorage.setItem("noteId", newNoteId.toString());
-    }
+    const keys = await AsyncStorage.getAllKeys();
+    let newNoteId = noteId !== "" ? noteId : keys.length.toString();
 
     const today = new Date();
     const savedOn = moment(today).format("MMM DD YYYY");
@@ -47,13 +31,12 @@ export default function NotesScreen({ route, navigation }: any) {
     try {
       const keyExists = await AsyncStorage.getItem(newNoteId.toString());
       if (!keyExists) {
-        const colorIdx = await AsyncStorage.getItem("colorIndex");
         const noteObject = JSON.stringify({
           noteId: newNoteId,
           savedAt,
           savedOn,
           noteContent: text,
-          noteColor: colors[Number(colorIdx) || 0],
+          noteColor: colors[Math.floor(Math.random() * 5)],
         });
 
         await AsyncStorage.setItem(newNoteId.toString(), noteObject);
@@ -106,7 +89,7 @@ export default function NotesScreen({ route, navigation }: any) {
     //   }}
     // >
     <View style={styles.container}>
-      {noteId !== "-1" ? (
+      {noteId !== "" ? (
         <>
           <TextInput
             keyboardType="default"
