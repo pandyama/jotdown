@@ -14,6 +14,15 @@ import {
 import HomeScreen from "./components/screens/Home/HomeScreen";
 import NotesScreen from "./components/screens/Notes/NotesScreen";
 
+/**
+ * Useful expo commands
+ * - `eas build --platform ios`
+ * - `eas submit -p ios --latest`
+ *
+ * Useful links
+ * - https://icons.expo.fyi/Index/Entypo/trash
+ */
+
 const stack = createNativeStackNavigator();
 
 export default function App() {
@@ -93,18 +102,6 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 2,
     margin: 5,
-  },
-  twoColumns: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-  },
-  leftColumn: {
-    flex: 1,
-  },
-  rightColumn: {
-    flex: 1,
   },
   textStyle: { fontFamily: "Quicksand-Light" },
 });
