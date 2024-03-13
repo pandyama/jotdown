@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "jotdown",
+    "name": "loggedit",
     "slug": "jotdown",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -11,20 +11,34 @@
       "resizeMode": "contain",
       "backgroundColor": "#ffffff"
     },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
+    "assetBundlePatterns": ["**/*"],
     "ios": {
-      "supportsTablet": true
+      "supportsTablet": true,
+      "bundleIdentifier": "com.mp.jotdown",
+      "buildNumber": "1.0.4"
+    },
+    "androidStatusBar": {
+      "backgroundColor": "#F2F3F4",
+      "translucent": false
     },
     "android": {
+      "package": "com.mp.jotdown",
+      "versionCode": 7,
+      "version": "1.2.0",
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./assets/appIcon_foreground.png",
+        "backgroundImage": "./assets/appIcon_background.png",
+        "monochromeImage": "./assets/appIcon_monochrome.png"
+      },
+      "softwareKeyboardLayoutMode": "pan"
     },
     "web": {
       "favicon": "./assets/favicon.png"
+    },
+    "extra": {
+      "eas": {
+        "projectId": "11bc2c3b-0f37-4b6a-9a0a-918e8b74a0a2"
+      }
     }
   }
 }

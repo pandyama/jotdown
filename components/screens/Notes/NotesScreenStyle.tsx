@@ -15,7 +15,8 @@ export const styles = StyleSheet.create({
   container: {
     backgroundColor: "#252525",
     alignItems: "center",
-    justifyContent: "flex-start",
+    flex: 1,
+    justifyContent: "space-around",
   },
   saveButton: {
     position: "absolute",

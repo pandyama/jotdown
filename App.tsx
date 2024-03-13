@@ -1,12 +1,27 @@
-import React, { useCallback, useEffect, useState } from "react";
+import React from "react";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { useFonts } from "expo-font";
-import { StyleSheet, Text, View } from "react-native";
+import {
+  StyleSheet,
+  Text,
+  View,
+  KeyboardAvoidingView,
+  Platform,
+} from "react-native";
 
 import HomeScreen from "./components/screens/Home/HomeScreen";
 import NotesScreen from "./components/screens/Notes/NotesScreen";
+
+/**
+ * Useful expo commands
+ * - `eas build --platform ios`
+ * - `eas submit -p ios --latest`
+ *
+ * Useful links
+ * - https://icons.expo.fyi/Index/Entypo/trash
+ */
 
 const stack = createNativeStackNavigator();
 
@@ -30,39 +45,51 @@ export default function App() {
   return (
     <>
       {fontsLoaded && (
-        <NavigationContainer>
-          <stack.Navigator initialRouteName="Home">
-            <stack.Screen
-              name="Home"
-              component={HomeScreen}
-              options={{
-                title: "Jot Down",
-                headerStyle: {
-                  backgroundColor: "#F2F3F4",
-                },
-                headerTitleStyle: {
-                  fontFamily: "DMSans-Regular",
-                  fontSize: 30,
-                  color: "#252525",
-                },
-              }}
-            />
-            <stack.Screen
-              name="Notes"
-              component={NotesScreen}
-              options={{
-                title: "Write Note",
-                headerStyle: {
-                  backgroundColor: "#F2F3F4",
-                },
-                headerTitleStyle: {
-                  fontFamily: "DMSans-Regular",
-                  fontSize: 30,
-                },
-              }}
-            />
-          </stack.Navigator>
-        </NavigationContainer>
+        <KeyboardAvoidingView
+          style={{
+            flex: 1,
+          }}
+          enabled
+          behavior={Platform.OS === "ios" ? "padding" : "height"}
+          keyboardVerticalOffset={Platform.select({
+            ios: 0,
+            android: 0,
+          })}
+        >
+          <NavigationContainer>
+            <stack.Navigator initialRouteName="Home">
+              <stack.Screen
+                name="Home"
+                component={HomeScreen}
+                options={{
+                  title: "Logged It",
+                  headerStyle: {
+                    backgroundColor: "#F2F3F4",
+                  },
+                  headerTitleStyle: {
+                    fontFamily: "DMSans-Regular",
+                    fontSize: 30,
+                    color: "#252525",
+                  },
+                }}
+              />
+              <stack.Screen
+                name="Notes"
+                component={NotesScreen}
+                options={{
+                  title: "Write Note",
+                  headerStyle: {
+                    backgroundColor: "#F2F3F4",
+                  },
+                  headerTitleStyle: {
+                    fontFamily: "DMSans-Regular",
+                    fontSize: 30,
+                  },
+                }}
+              />
+            </stack.Navigator>
+          </NavigationContainer>
+        </KeyboardAvoidingView>
       )}
     </>
   );
@@ -75,18 +102,6 @@ const styles = StyleSheet.create({
     borderStyle: "solid",
     borderWidth: 2,
     margin: 5,
-  },
-  twoColumns: {
-    flex: 1,
-    flexDirection: "row",
-    flexWrap: "wrap",
-    alignItems: "flex-start",
-  },
-  leftColumn: {
-    flex: 1,
-  },
-  rightColumn: {
-    flex: 1,
   },
   textStyle: { fontFamily: "Quicksand-Light" },
 });
